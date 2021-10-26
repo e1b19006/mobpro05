@@ -40,15 +40,15 @@ public class Sample51Controller {
   @Transactional
   public String sample53(@RequestParam Integer id, ModelMap model) {
     // 削除対象のフルーツを取得
-     Fruit fruit3 = fMapper.selectById(id);
-     model.addAttribute("fruit3", fruit3);
+    Fruit fruit3 = fMapper.selectById(id);
+    model.addAttribute("fruit3", fruit3);
 
     // 削除
-     fMapper.deleteById(id);
+    fMapper.deleteById(id);
 
     // 削除後のフルーツリストを取得
-     ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
-     model.addAttribute("fruits2", fruits2);
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
     return "sample51.html";
   }
 
@@ -56,12 +56,12 @@ public class Sample51Controller {
   @Transactional
   public String sample54(@RequestParam Integer id, ModelMap model) {
     // 編集対象のフルーツを取得
-    // Fruit fruit4 = fMapper.selectById(id);
-    // model.addAttribute("fruit4", fruit4);
+    Fruit fruit4 = fMapper.selectById(id);
+    model.addAttribute("fruit4", fruit4);
 
     // フルーツリストを取得
-    // ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
-    // model.addAttribute("fruits2", fruits2);
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
     return "sample51.html";
   }
 
@@ -80,12 +80,11 @@ public class Sample51Controller {
     System.out.println(id);
     System.out.println(name);
     System.out.println(price);
-    // Fruit fruit = new Fruit(id, name, price);
-    // update
-    // fMapper.updateById(fruit);
+    Fruit fruit = new Fruit(id, name, price);
+    fMapper.updateById(fruit);
     // フルーツリストを取得
-    // ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
-    // model.addAttribute("fruits2", fruits2);
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
 
     return "sample51.html";
   }
