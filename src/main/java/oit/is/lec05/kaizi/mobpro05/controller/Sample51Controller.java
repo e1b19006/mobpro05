@@ -1,6 +1,6 @@
 package oit.is.lec05.kaizi.mobpro05.controller;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-//import oit.is.inudaisuki.springboot_samples.model.Fruit;
-//import oit.is.inudaisuki.springboot_samples.model.FruitMapper;
+import oit.is.lec05.kaizi.mobpro05.model.Fruit;
+import oit.is.lec05.kaizi.mobpro05.model.FruitMapper;
 
 /**
  * /sample5へのリクエストを扱うクラス authenticateの設定をしていれば， /sample5へのアクセスはすべて認証が必要になる
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Sample51Controller {
 
   @Autowired
-  // FruitMapper fMapper;
+  FruitMapper fMapper;
 
   @GetMapping("step1")
   public String sample51() {
@@ -31,8 +31,8 @@ public class Sample51Controller {
 
   @GetMapping("step2")
   public String sample52(ModelMap model) {
-    // ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
-    // model.addAttribute("fruits2", fruits2);
+    ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+    model.addAttribute("fruits2", fruits2);
     return "sample51.html";
   }
 
@@ -40,15 +40,15 @@ public class Sample51Controller {
   @Transactional
   public String sample53(@RequestParam Integer id, ModelMap model) {
     // 削除対象のフルーツを取得
-    // Fruit fruit3 = fMapper.selectById(id);
-    // model.addAttribute("fruit3", fruit3);
+     Fruit fruit3 = fMapper.selectById(id);
+     model.addAttribute("fruit3", fruit3);
 
     // 削除
-    // fMapper.deleteById(id);
+     fMapper.deleteById(id);
 
     // 削除後のフルーツリストを取得
-    // ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
-    // model.addAttribute("fruits2", fruits2);
+     ArrayList<Fruit> fruits2 = fMapper.selectAllFruit();
+     model.addAttribute("fruits2", fruits2);
     return "sample51.html";
   }
 
